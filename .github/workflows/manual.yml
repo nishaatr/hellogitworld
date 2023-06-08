@@ -14,6 +14,6 @@ jobs:
           github-repo: angular5-quickstart
           github-token: ${{secrets.GITHUB_TOKEN}}
           slack-app-token: ${{secrets.SLACK_TOKEN}}}
-          slack-channel-id: D057B611ABY
+          slack-channel-id: C05CBQ7UXEC
           post-to-slack: "false"
           log-debug-messages: "true"
