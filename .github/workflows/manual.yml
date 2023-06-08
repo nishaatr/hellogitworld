@@ -13,7 +13,7 @@ jobs:
           github-owner: nishaatr
           github-repo: angular5-quickstart
           github-token: ${{secrets.GITHUB_TOKEN}}
-          slack-app-token: xoxe.xoxp-1-Mi0yLTIxNTk0NjcxNTMtNTI2ODQ1MDA1Nzg4OS01Mzk4MDM4NzcxNzE2LTUzOTI2NjYyNzEwNjEtOTBjMWFkYzk1ZDZjZGJjYzBjOTEzMWJjNTY1MGRjY2EwYzUxNzMwZTIyMDcxNGU2YjYwNzJjNmZjYjY4ZGZkNg
+          slack-app-token: xoxb-2159467153-5408539429777-ZOg3wPvWRN6maYP0ZlQGXTzU
           slack-channel-id: D057B611ABY
           post-to-slack: "false"
           log-debug-messages: "true"
