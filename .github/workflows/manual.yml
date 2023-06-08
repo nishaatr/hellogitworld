@@ -1,0 +1,17 @@
+name: Report Metrics
+
+on: [workflow_dispatch]
+
+jobs:
+  report:
+    name: Slack
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: Addepar/github-metrics@v1.2.0
+        with:
+          github-owner: nishaatr
+          github-repo: angular5-quickstart
+          github-token: ${{secrets.GITHUB_TOKEN}}
+          post-to-slack: "false"
+          log-debug-messages: "true"
