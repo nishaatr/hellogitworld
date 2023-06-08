@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: Addepar/github-metrics@v1.2.0
+      - uses: Addepar/github-metrics@v3.0.0
         with:
           github-owner: nishaatr
           github-repo: angular5-quickstart
