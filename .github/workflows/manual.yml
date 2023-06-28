@@ -1,7 +1,12 @@
 name: Report Metrics
 
-on: [workflow_dispatch]
-
+on:
+  workflow_dispatch:
+   inputs:
+    dispatch_id:
+      description: 'A unique ID provided when dispatching this workflow'
+      required: false
+      type: string
 jobs:
   report:
     name: Slack
