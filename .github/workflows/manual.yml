@@ -17,3 +17,6 @@ jobs:
           slack-channel-id: C05CBQ7UXEC
           post-to-slack: "true"
           log-debug-messages: "true"
+      - name: Sleep
+        run: sleep 15s
+        shell: bash
