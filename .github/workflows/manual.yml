@@ -8,6 +8,13 @@ on:
       required: false
       type: string
 jobs:
+  dispatch-id:
+    if: github.event_name == 'workflow_dispatch' && github.event.inputs.dispatch_id != ''
+    runs-on: [ ubuntu-latest ]
+    steps:
+    - id: dispatch-id
+      name: ${{ github.event.inputs.dispatch_id }}
+      run: echo "💁 The dispatch ID is ${{ github.event.inputs.dispatch_id }}"
   report:
     name: Slack
     runs-on: ubuntu-latest
