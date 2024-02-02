@@ -11,7 +11,7 @@ As a quick reminder, this came from one of three locations in either SSH, Git, o
 
 * git@github.com:matthewmccullough/hellogitworld.git // Nishaat comment
 * https://matthewmccullough@github.com/matthewmccullough/hellogitworld.git
-
+sd
 This demo also includes an image with changes on a branch for examination of image diff on GitHub.
 
 // Nishaat comment
