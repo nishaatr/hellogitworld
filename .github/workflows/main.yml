@@ -9,5 +9,6 @@ jobs:
          - name: Copy milestone to other PR
            run: |
              echo "ddddddddddddddddddddddddddddddddddddd"
+             exit 1
            env:
               GH_TOKEN: ${{ secrets.DEVOPSHAZELCAST_PAT_FOR_MONOREPO }}
