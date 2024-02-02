@@ -1,0 +1,13 @@
+name: Synchronize PR Milestone
+on:
+   pull_request_target:
+
+jobs:
+   synchronize-pr-milestone:
+      runs-on: ubuntu-latest
+      steps:
+         - name: Copy milestone to other PR
+           run: |
+             echo "ddddddddddddddddddddddddddddddddddddd"
+           env:
+              GH_TOKEN: ${{ secrets.DEVOPSHAZELCAST_PAT_FOR_MONOREPO }}
