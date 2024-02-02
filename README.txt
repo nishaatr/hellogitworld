@@ -10,7 +10,7 @@ As a quick reminder, this came from one of three locations in either SSH, Git, o
 // Nishaat comment
 
 * git@github.com:matthewmccullougsdsdh/hellogitworld.git // Nishaat comment
-* https://matthewmccullough@github.com/matthewmccullough/hellogitworld.git
+* https://matthewmccullough@github.com/matthewmccullough/hellogitworld.gitfyt
 sd
 This demo also includes an image with changes on a branch for examination of image diff on GitHub.
 
