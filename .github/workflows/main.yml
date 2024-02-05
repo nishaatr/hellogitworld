@@ -20,8 +20,10 @@ jobs:
     name: Check for mandatory labels
     runs-on: ubuntu-latest
     steps:
+      - name: Test App
+        run: |
+          curl -X PATCH  -H "Accept: application/vnd.github+json"  -H "Authorization: Bearer ${{ GITHUB_TOEKN }}" "https://api.github.com/repos/nishaatr/hellogitworld/check-runs/21218694827" -d '{"output":{"title":"Mighty Readme report","summary":"SUMMARY","text":"TEXT"}}' 
       - name: Test labels for 'Source:'
-
         uses: docker://agilepathway/pull-request-label-checker:latest
         with:
           prefix_mode: true
@@ -33,3 +35,4 @@ jobs:
           prefix_mode: true
           one_of: "Team:"
           repo_token: ${{ secrets.GH_TOKEN }}
+
