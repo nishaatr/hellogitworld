@@ -31,6 +31,4 @@ jobs:
           echo "VVVVVVVVVV ${{ github.event.pull_request.head.sha }}"
           RUNID=$(gh api https://api.github.com/repos/nishaatr/hellogitworld/commits/${{ github.event.pull_request.head.sha }}/check-runs | jq -r '.check_runs[] | select(.name == "checkMandLabels") | .id')
           echo "LLLLLLLLL $RUNID"
-          curl -X PATCH  -H "Accept: application/vnd.github+json"  -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" "https://api.github.com/repos/nishaatr/hellogitworld/check-runs/$RUNID" -d '{"name":"XXXXXXXXXXX", "conclusion":"action_required", "output":{"title":"Mighty Readme report","summary":"SUMMARY","text":"TEXT"}}' 
-
-
+          curl -X POST -H "Accept: application/vnd.github+json" -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" "https://api.github.com/repos/nishaatr/hellogitworld/check-runs" -d '{"name":"FAILED","head_sha":"${{ github.event.pull_request.head.sha }}","conclusion":"action_required","status":"completed","output":{"title":"HELP","summary":"DEAD","text":"WHY"}}'
