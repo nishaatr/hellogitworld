@@ -20,9 +20,18 @@ jobs:
     name: Check for mandatory labels
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/create-github-app-token@v1
+        id: app-token
+        with:
+          app-id: ${{ secrets.APP_ID }}
+          private-key: ${{ secrets.APP_KEY }}
+          github-api-url: "https://github.acme-inc.com/api/v3"
+      - uses: ./actions/staging-tests
+        with:
+          token: ${{ steps.app-token.outputs.token }}
       - name: Test App
         run: |
-          curl -X PATCH  -H "Accept: application/vnd.github+json"  -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" "https://api.github.com/repos/nishaatr/hellogitworld/check-runs/21218694827" -d '{"output":{"title":"Mighty Readme report","summary":"SUMMARY","text":"TEXT"}}' 
+          curl -X PATCH  -H "Accept: application/vnd.github+json"  -H "Authorization: Bearer ${{ steps.app-token.outputs.token }}" "https://api.github.com/repos/nishaatr/hellogitworld/check-runs/21218694827" -d '{"output":{"title":"Mighty Readme report","summary":"SUMMARY","text":"TEXT"}}' 
       - name: Test labels for 'Source:'
         uses: docker://agilepathway/pull-request-label-checker:latest
         with:
