@@ -32,7 +32,6 @@ jobs:
           RUNID=$(gh api https://api.github.com/repos/nishaatr/hellogitworld/commits/${{ github.event.pull_request.head.sha }}/check-runs | jq -r '.check_runs[] | select(.name == "checkMandLabels") | .id')
           echo "LLLLLLLLL $RUNID"
           curl -X PATCH  -H "Accept: application/vnd.github+json"  -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" "https://api.github.com/repos/nishaatr/hellogitworld/check-runs/$RUNID" -d '{"name":"XXXXXXXXXXX", "conclusion":"action_required", "output":{"title":"Mighty Readme report","summary":"SUMMARY","text":"TEXT"}}' 
-          sleep 10
       - name: Test labels for 'Source:'
         uses: docker://agilepathway/pull-request-label-checker:latest
         with:
