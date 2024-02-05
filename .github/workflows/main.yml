@@ -25,6 +25,8 @@ jobs:
           app-id: ${{ secrets.APP_ID }}
           private-key: ${{ secrets.APP_KEY }}
       - name: Test App
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           RUNID=$(gh api repos/$OWNER/$REPO/commits/$COMMIT_SHA/check-runs | jq -r '.check_runs[] | select(.name == "checkMandLabels") | .html_url | capture("/runs/(?<number>[0-9]+)/jobs") | .number' | sed 's/"//g' | head -n 1)
           curl -X PATCH  -H "Accept: application/vnd.github+json"  -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" "https://api.github.com/repos/nishaatr/hellogitworld/check-runs/$RUNID" -d '{"name":"XXXXXXXXXXX", "output":{"title":"Mighty Readme report","summary":"SUMMARY","text":"TEXT"}}' 
