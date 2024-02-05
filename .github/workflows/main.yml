@@ -27,7 +27,7 @@ jobs:
           private-key: ${{ secrets.APP_KEY }}
       - name: Test App
         run: |
-          curl -X PATCH  -H "Accept: application/vnd.github+json"  -H "Authorization: Bearer ${{ steps.app-token.outputs.token }}" "https://api.github.com/repos/nishaatr/hellogitworld/check-runs/21218694827" -d '{"output":{"title":"Mighty Readme report","summary":"SUMMARY","text":"TEXT"}}' 
+          curl -X PATCH  -H "Accept: application/vnd.github+json"  -H "Authorization: Bearer ${{ secret.GITHUB_TOKEN }}" "https://api.github.com/repos/nishaatr/hellogitworld/check-runs/21218694827" -d '{"output":{"title":"Mighty Readme report","summary":"SUMMARY","text":"TEXT"}}' 
       - name: Test labels for 'Source:'
         uses: docker://agilepathway/pull-request-label-checker:latest
         with:
