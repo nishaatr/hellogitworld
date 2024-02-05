@@ -1,14 +1,35 @@
-name: Synchronize PR Milestone
+name: Check labels
+run-name: "ddddd"
 on:
    pull_request_target:
-
+      branches:
+         - "master"
+         - "[0-9]+.[0-9]+.z"
+         - "[0-9]+.[0-9]+.[0-9]"
+         - "[0-9]+.[0-9]+.[0-9]+-BETA-[0-9]+"
+         - "[0-9]+.[0-9]+.[0-9]+-DEVEL-[0-9]+"
+         - "data-migration-5.3"
+      types:
+         - opened
+         - synchronize
+         - reopened
+         - labeled
+         - unlabeled
 jobs:
-   synchronize-pr-milestone:
-      runs-on: ubuntu-latest
-      steps:
-         - name: Copy milestone to other PR
-           run: |
-             echo "ddddddddddddddddddddddddddddddddddddd"
-             exit 1
-           env:
-              GH_TOKEN: ${{ secrets.DEVOPSHAZELCAST_PAT_FOR_MONOREPO }}
+  check_labels:
+    name: Check for mandatory labels
+    runs-on: ubuntu-latest
+    steps:
+      - name: Test labels for 'Source:'
+
+        uses: docker://agilepathway/pull-request-label-checker:latest
+        with:
+          prefix_mode: true
+          one_of: "Source:"
+          repo_token: ${{ secrets.GH_TOKEN }}
+      - name: Test labels for 'Team:'
+        uses: docker://agilepathway/pull-request-label-checker:latest
+        with:
+          prefix_mode: true
+          one_of: "Team:"
+          repo_token: ${{ secrets.GH_TOKEN }}
