@@ -1,0 +1,30 @@
+name: Check
+on:
+   pull_request_target:
+      branches:
+         - "master"
+         - "[0-9]+.[0-9]+.z"
+         - "[0-9]+.[0-9]+.[0-9]"
+         - "[0-9]+.[0-9]+.[0-9]+-BETA-[0-9]+"
+         - "[0-9]+.[0-9]+.[0-9]+-DEVEL-[0-9]+"
+         - "data-migration-5.3"
+      types:
+         - opened
+         - synchronize
+         - reopened
+         - labeled
+         - unlabeled
+jobs:
+  check_labels:
+    name: checkMandLabels
+    runs-on: ubuntu-latest
+    steps:
+      - name: Test App
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          echo "VVVVVVVVVV ${{ github.event.pull_request.head.sha }}"
+          RUNID=$(gh api https://api.github.com/repos/nishaatr/hellogitworld/commits/${{ github.event.pull_request.head.sha }}/check-runs | jq -r '.check_runs[] | select(.name == "checkMandLabels") | .id')
+          echo "LLLLLLLLL $RUNID"
+          curl -X PATCH  -H "Accept: application/vnd.github+json"  -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" "https://api.github.com/repos/nishaatr/hellogitworld/check-runs/$RUNID" -d '{"name":"XXXXXXXXXXX", "conclusion":"action_required", "output":{"title":"Mighty Readme report","summary":"SUMMARY","text":"TEXT"}}' 
+          python --version

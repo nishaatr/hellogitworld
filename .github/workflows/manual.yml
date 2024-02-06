@@ -1,0 +1,34 @@
+name: Report Metrics
+
+on:
+  workflow_dispatch:
+   inputs:
+    dispatch_id:
+      description: 'A unique ID provided when dispatching this workflow'
+      required: false
+      type: string
+jobs:
+  dispatch-id:
+    if: github.event_name == 'workflow_dispatch' && github.event.inputs.dispatch_id != ''
+    runs-on: [ ubuntu-latest ]
+    steps:
+    - id: dispatch-id
+      name: ${{ github.event.inputs.dispatch_id }}
+      run: echo "💁 The dispatch ID is ${{ github.event.inputs.dispatch_id }}"
+  report:
+    name: Slack
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: Addepar/github-metrics@v3.0.0
+        with:
+          github-owner: nishaatr
+          github-repo: angular5-quickstart
+          github-token: ${{secrets.GH_TOKEN}}
+          slack-app-token: ${{secrets.SLACK_TOKEN}}
+          slack-channel-id: C05CBQ7UXEC
+          post-to-slack: "true"
+          log-debug-messages: "true"
+      - name: Sleep
+        run: sleep 30s
+        shell: bash
