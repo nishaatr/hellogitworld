@@ -1,4 +1,4 @@
-This is a sample project students can use during Matthew's Git class.
+tThis is a sample project students can use during Matthew's Git class.
 
 Here is an addition by measaas
 
@@ -14,6 +14,7 @@ As a quick reminder, this came from one of three locations in either SSH, Git, o
 sd
 This demo also includes an image with changes on a branch for examination of image diff on GitHub.
 
-// Nishaat comment
-// Nishaat comment
-// Nishaat comment
+// Nishaat commentfd
+// Nishaat commenttrsddzfgsdsdas
+// Nishaat commentsdfgfgdfdfsdsdsdasasffgsdsdsdsdsdsdty
+sdsdsddfsdsdsdsdsdas
